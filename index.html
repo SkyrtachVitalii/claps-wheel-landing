@@ -1,220 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body class="body">
-    <img class="logo" src="/src/img/logo.svg" alt="">
-    <aside class="enterEmail" id="enterEmail">
+  <body>
+    <main class="testYourLuck">
+      <img class="logo" src="/src/img/logo.svg" alt="" />
+      <aside class="enterEmail" id="enterEmail">
         <form class="enterEmail__form">
-            <input class="enterEmail__playerEmail" type="email" name="playerEmail" id="playerEmail" placeholder="SUBSCRIBE FOR EARLY ACCESS" required >
-            <button type="button" class="enterEmail__btn" id="enterEmail__btn"></button>
+          <input
+            class="enterEmail__playerEmail"
+            type="email"
+            name="playerEmail"
+            id="playerEmail"
+            placeholder="SUBSCRIBE FOR EARLY ACCESS"
+            required
+          />
+          <button
+            type="button"
+            class="enterEmail__btn"
+            id="enterEmail__btn"
+          ></button>
         </form>
         <h5 class="enterEmail__title">LEAVE YOUR EMAIL AND GET TOP BONUSES</h5>
         <p class="enterEmail__descr">CASHBACK FOR THE FIRST 50 CUSTOMERS</p>
-    </aside>
+      </aside>
 
-    <aside class="wheelContainer" id="wheel">
+      <aside class="wheelContainer" id="wheel">
         <div class="container">
-            <div class="wheelContainer__wrapp">
-                <div class="wheelContainer__close containerCloseButton" id="closeButton">
-                    <svg width="32" height="32" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.31226" y="0.443359" width="26.4283" height="2.64283" rx="1.32141"
-                            transform="rotate(45 2.31226 0.443359)" fill="white" />
-                        <rect x="0.443604" y="19.1309" width="26.4283" height="2.64283" rx="1.32141"
-                            transform="rotate(-45 0.443604 19.1309)" fill="white" />
-                    </svg>
-                </div>
-                <div class="wheel">
-                    <div class="wheel__outer">
-                        <div class="wheel__lamp" style="--i:0;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:1;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:2;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:3;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:4;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:5;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:6;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                        <div class="wheel__lamp" style="--i:7;">
-                            <img class="wheel__lampImg" src="/src/img/lamp.png" alt="">
-                            <img class="wheel__light" src="/src/img/light.png" alt="">
-                        </div>
-                    </div>
-                    <div class="wheel__spinSector">
-                        <img src="/src/img/star_1.png" alt="" class="wheel__spinSectorStar1">
-                        <img src="/src/img/star_2.png" alt="" class="wheel__spinSectorStar2">
-                        <button type="button" class="wheel__btn">spin</button>
-                    </div>
-                    <div class="wheel__sectors">
-                        <div class="wheel__sector" style="--i:0;">
-                            <img src="/src/img/segment_pink.png" alt="">
-                            <span class="wheel__prize">10</span>
-                            <span class="wheel__prizeMeasure">Free spins</span>
-                            <span class="wheel__prizeMeasureAddText">to deposit</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:1;">
-                            <img src="/src/img/segment_yellow.png" alt="">
-                            <span class="wheel__prize">120%</span>
-                            <span class="wheel__prizeMeasure">to deposit</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:2;">
-                            <img src="/src/img/segment_pink.png" alt="">
-                            <span class="wheel__prize">115%</span>
-                            <span class="wheel__prizeMeasure">Free spins</span>
-                            <span class="wheel__prizeMeasureAddText">to deposit</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:3;">
-                            <img src="/src/img/segment_yellow.png" alt="">
-                            <span class="wheel__prize">115%</span>
-                            <span class="wheel__prizeMeasure">to deposit</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:4;">
-                            <img src="/src/img/segment_pink.png" alt="">
-                            <span class="wheel__prize">15</span>
-                            <span class="wheel__prizeMeasure">Free spins</span>
-                            <span class="wheel__prizeMeasureAddText">to deposit</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:5;">
-                            <img src="/src/img/segment_yellow.png" alt="">
-                            <span class="wheel__prize">120%</span>
-                            <span class="wheel__prizeMeasure">to deposit</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:6;">
-                            <img src="/src/img/segment_pink.png" alt="">
-                            <span class="wheel__prize">NO</span>
-                            <span class="wheel__prizeMeasure">Prize</span>
-                        </div>
-                        <div class="wheel__sector" style="--i:7;">
-                            <img src="/src/img/segment_yellow.png" alt="">
-                            <span class="wheel__prize">100%</span>
-                            <span class="wheel__prizeMeasure">to deposit</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="wheelContainer__title">
-                    spin the wheel and win!
-                </p>
-                <a href="#" class="btn btn__spinWheel">spin the wheel </a>
+          <div class="wheelContainer__wrapp">
+            <div
+              class="wheelContainer__close containerCloseButton"
+              id="closeButton"
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 21 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="2.31226"
+                  y="0.443359"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(45 2.31226 0.443359)"
+                  fill="white"
+                />
+                <rect
+                  x="0.443604"
+                  y="19.1309"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(-45 0.443604 19.1309)"
+                  fill="white"
+                />
+              </svg>
             </div>
+            <div class="wheel">
+              <div class="wheel__outer">
+                <div class="wheel__lamp" style="--i: 0">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 1">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 2">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 3">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 4">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 5">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 6">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 7">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+              </div>
+              <div class="wheel__spinSector">
+                <img
+                  src="/src/img/star_1.png"
+                  alt=""
+                  class="wheel__spinSectorStar1"
+                />
+                <img
+                  src="/src/img/star_2.png"
+                  alt=""
+                  class="wheel__spinSectorStar2"
+                />
+                <button type="button" class="wheel__btn">spin</button>
+              </div>
+              <div class="wheel__sectors">
+                <div class="wheel__sector" style="--i: 0">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">10</span>
+                  <span class="wheel__prizeMeasure">Free spins</span>
+                  <span class="wheel__prizeMeasureAddText">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 1">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">120%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 2">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">115%</span>
+                  <span class="wheel__prizeMeasure">Free spins</span>
+                  <span class="wheel__prizeMeasureAddText">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 3">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">115%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 4">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">15</span>
+                  <span class="wheel__prizeMeasure">Free spins</span>
+                  <span class="wheel__prizeMeasureAddText">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 5">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">120%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 6">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">NO</span>
+                  <span class="wheel__prizeMeasure">Prize</span>
+                </div>
+                <div class="wheel__sector" style="--i: 7">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">100%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+              </div>
+            </div>
+            <p class="wheelContainer__title">spin the wheel and win!</p>
+            <button class="btn btn__spinWheel">spin the wheel</button>
+          </div>
         </div>
-    </aside>
+      </aside>
 
-    <aside class="victory" id="victory">
+      <aside class="victory" id="victory">
         <div class="victory__bg"></div>
         <div class="container">
-            <div class="victory__wrapp">
-                <div class="victory__close containerCloseButton" id="closeButton">
-                    <svg width="32" height="32" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.31226" y="0.443359" width="26.4283" height="2.64283" rx="1.32141"
-                            transform="rotate(45 2.31226 0.443359)" fill="white" />
-                        <rect x="0.443604" y="19.1309" width="26.4283" height="2.64283" rx="1.32141"
-                            transform="rotate(-45 0.443604 19.1309)" fill="white" />
-                    </svg>
-                </div>
-                <h2 class="victory__title">
-                    congratulations!
-                </h2>
-
-                <div class="victory__prize">
-                    <p class="victory__subtitle">
-                        You win
-                    </p>
-                    <p class="victory__prizeVal">
-                        10 Usdt
-                    </p>
-                </div>
-
-                <a href="#" class="btn containerCloseButton">Collect</a>
+          <div class="victory__wrapp">
+            <div class="victory__close containerCloseButton" id="closeButton">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 21 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="2.31226"
+                  y="0.443359"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(45 2.31226 0.443359)"
+                  fill="white"
+                />
+                <rect
+                  x="0.443604"
+                  y="19.1309"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(-45 0.443604 19.1309)"
+                  fill="white"
+                />
+              </svg>
             </div>
-        </div>
-    </aside>
+            <h2 class="victory__title">congratulations!</h2>
 
-    <aside class="noPrize" id="noPrize">
+            <div class="victory__prize">
+              <p class="victory__subtitle">You win</p>
+              <p class="victory__prizeVal">10 Usdt</p>
+            </div>
+
+            <a href="#" class="btn containerCloseButton">Collect</a>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="noPrize" id="noPrize">
         <div class="noPrize__bg"></div>
         <div class="container">
-            <div class="noPrize__wrapp">
-                <div class="noPrize__close containerCloseButton" id="closeButton">
-                    <svg width="32" height="32" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.31226" y="0.443359" width="26.4283" height="2.64283" rx="1.32141"
-                            transform="rotate(45 2.31226 0.443359)" fill="white" />
-                        <rect x="0.443604" y="19.1309" width="26.4283" height="2.64283" rx="1.32141"
-                            transform="rotate(-45 0.443604 19.1309)" fill="white" />
-                    </svg>
-                </div>
-                <img class="noPrize__img" src="/src/img/no_prize.svg" alt="">
-                <div class="noPrize__prize">
-                    <p class="noPrize__prizeVal">
-                        No prize
-                    </p>
-                    <p class="noPrize__subtitle">
-                        Thanks for playing!
-                    </p>
-                    <p class="noPrize__subtitle">
-                        Come back soon to spin again
-                    </p>
-                </div>
-
-                <div class="noPrize__timer">
-                    <span class="noPrize__timerText">
-                        Next spin
-                    </span>
-                    <span class="noPrize__timerTime timeToNextSpin"></span>
-                </div>
+          <div class="noPrize__wrapp">
+            <div class="noPrize__close containerCloseButton" id="closeButton">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 21 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="2.31226"
+                  y="0.443359"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(45 2.31226 0.443359)"
+                  fill="white"
+                />
+                <rect
+                  x="0.443604"
+                  y="19.1309"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(-45 0.443604 19.1309)"
+                  fill="white"
+                />
+              </svg>
             </div>
+            <img class="noPrize__img" src="/src/img/no_prize.svg" alt="" />
+            <div class="noPrize__prize">
+              <p class="noPrize__prizeVal">No prize</p>
+              <p class="noPrize__subtitle">Thanks for playing!</p>
+              <p class="noPrize__subtitle">Come back soon to spin again</p>
+            </div>
+
+            <button disabled="disabled" class="btn btn__disabled">
+              <div>Next spin</div>
+              <div class="btn__timer">--:--:--</div>
+            </button>
+          </div>
         </div>
-    </aside>
+      </aside>
 
+      <aside class="wheelContainer bonusReceived" id="bonus-received">
+        <div class="container">
+          <div class="wheelContainer__wrapp">
+            <div
+              class="wheelContainer__close containerCloseButton"
+              id="closeButton"
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 21 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="2.31226"
+                  y="0.443359"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(45 2.31226 0.443359)"
+                  fill="white"
+                />
+                <rect
+                  x="0.443604"
+                  y="19.1309"
+                  width="26.4283"
+                  height="2.64283"
+                  rx="1.32141"
+                  transform="rotate(-45 0.443604 19.1309)"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <div class="wheel">
+              <div class="wheel__outer">
+                <div class="wheel__lamp" style="--i: 0">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 1">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 2">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 3">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 4">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 5">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 6">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+                <div class="wheel__lamp" style="--i: 7">
+                  <img class="wheel__lampImg" src="/src/img/lamp.png" alt="" />
+                  <img class="wheel__light" src="/src/img/light.png" alt="" />
+                </div>
+              </div>
+              <div class="wheel__spinSector">
+                <img
+                  src="/src/img/star_1.png"
+                  alt=""
+                  class="wheel__spinSectorStar1"
+                />
+                <img
+                  src="/src/img/star_2.png"
+                  alt=""
+                  class="wheel__spinSectorStar2"
+                />
+                <button type="button" class="wheel__btn">spin</button>
+              </div>
+              <div class="wheel__sectors">
+                <div class="wheel__sector" style="--i: 0">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">10</span>
+                  <span class="wheel__prizeMeasure">Free spins</span>
+                  <span class="wheel__prizeMeasureAddText">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 1">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">120%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 2">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">115%</span>
+                  <span class="wheel__prizeMeasure">Free spins</span>
+                  <span class="wheel__prizeMeasureAddText">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 3">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">115%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 4">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">15</span>
+                  <span class="wheel__prizeMeasure">Free spins</span>
+                  <span class="wheel__prizeMeasureAddText">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 5">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">120%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+                <div class="wheel__sector" style="--i: 6">
+                  <img src="/src/img/segment_pink.png" alt="" />
+                  <span class="wheel__prize">NO</span>
+                  <span class="wheel__prizeMeasure">Prize</span>
+                </div>
+                <div class="wheel__sector" style="--i: 7">
+                  <img src="/src/img/segment_yellow.png" alt="" />
+                  <span class="wheel__prize">100%</span>
+                  <span class="wheel__prizeMeasure">to deposit</span>
+                </div>
+              </div>
+            </div>
+            <p class="wheelContainer__title">spin the wheel and win!</p>
+            <button disabled="disabled" class="btn btn__disabled">
+              <div>Next spin</div>
+              <div class="btn__timer">--:--:--</div>
+            </button>
+          </div>
+        </div>
+      </aside>
 
-
-    <footer class="footer">
+      <footer class="footer">
         <div class="footer__wrapp">
-            <a class="footer__link" href="https://www.facebook.com/profile.php?id=61562786731777" target="_blank">
-                <img src="/src/img/facebook.svg" alt="facebook">
-            </a>
-            <a class="footer__link" href="https://x.com/claps_global" target="_blank">
-                <img src="/src/img/x.svg" alt="x">
-            </a>
-            <a class="footer__link" href="https://www.instagram.com/claps_global/" target="_blank">
-                <img src="/src/img/instagram.svg" alt="instagram">
-            </a>
-            <a class="footer__link" href="https://www.linkedin.com/company/claps-global/" target="_blank">
-                <img src="/src/img/linkedin.svg" alt="linkedin">
-            </a>
-            <a class="footer__link" href="#" target="_blank">
-                <img src="/src/img/google.svg" alt="google">
-            </a>
-            <a class="footer__link" href="#" target="_blank">
-                <img src="/src/img/youtube.svg" alt="youtube">
-            </a>
+          <a
+            class="footer__link"
+            href="https://www.facebook.com/profile.php?id=61562786731777"
+            target="_blank"
+          >
+            <img src="/src/img/facebook.svg" alt="facebook" />
+          </a>
+          <a
+            class="footer__link"
+            href="https://x.com/claps_global"
+            target="_blank"
+          >
+            <img src="/src/img/x.svg" alt="x" />
+          </a>
+          <a
+            class="footer__link"
+            href="https://www.instagram.com/claps_global/"
+            target="_blank"
+          >
+            <img src="/src/img/instagram.svg" alt="instagram" />
+          </a>
+          <a
+            class="footer__link"
+            href="https://www.linkedin.com/company/claps-global/"
+            target="_blank"
+          >
+            <img src="/src/img/linkedin.svg" alt="linkedin" />
+          </a>
+          <a class="footer__link" href="#" target="_blank">
+            <img src="/src/img/google.svg" alt="google" />
+          </a>
+          <a class="footer__link" href="#" target="_blank">
+            <img src="/src/img/youtube.svg" alt="youtube" />
+          </a>
         </div>
-    </footer>
+      </footer>
 
-    <script src="/src/js/script.js"></script>
-</body>
-
+      <script src="/src/js/script.js"></script>
+    </main>
+  </body>
 </html>

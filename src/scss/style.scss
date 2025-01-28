@@ -5,6 +5,7 @@
 :root {
     --main-font: "Inter", sans-serif;
     --black: #302c2c;
+    --light-black: #181921;
     --white: #f5eded;
     --darkBlue: #070B29;
     --redError: #FF1B1C;
@@ -25,7 +26,7 @@
     --mobile320: 374px;
 }
 
-.body {
+.testYourLuck {
     height: 100dvh;
     background: url("/src/img/bg.webp") no-repeat bottom center;
     background-size: cover;
@@ -175,11 +176,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
         padding: 50px 10px 46px;
         max-width: 600px;
         width: 100%;
-        height: 738px;
+        max-height: 738px;
+        height: calc(100dvh - 128px);
         margin: 0 auto;
         background: linear-gradient(90deg, #5F5759 0%, #231E29 90%);
         background-size: cover;
@@ -498,17 +500,6 @@
         }
     }
 
-    // &__bg {
-    //     background: rgba(0, 0, 0, 0.6);
-    //     width: 100%;
-    //     height: 100%;
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     z-index: 0;
-    //     backdrop-filter: blur(10px);
-    // }
-
     &__wrapp {
         display: flex;
         flex-direction: column;
@@ -695,6 +686,10 @@
     }
 }
 
+.bonusReceived {
+    display: none;
+}
+
 .btn {
     background: rgb(255, 248, 0);
     background: linear-gradient(0deg, var(--yellow-1) 0%, var(--yellow-2) 100%);
@@ -702,6 +697,7 @@
     max-height: 67px;
     width: 100%;
     height: 100%;
+    padding: 20px;
     text-transform: uppercase;
     color: var(--black);
     font-family: "Sofia Sans", sans-serif;
@@ -715,6 +711,16 @@
     outline: none;
     border: none;
     cursor: pointer;
+    &__disabled {
+        background: var(--lightGrey);
+        color: var(--light-black);
+        flex-direction: column;
+        padding: 4px;
+        width: 276px;
+        height: 50px;
+        line-height: 1;
+    }
+
     &:hover {
         transition: 0.5s;
         scale: 1.1;
@@ -867,16 +873,16 @@
     .btn {
         width: 276px;
         height: 50px;
-        font-size: 24px;
+        font-size: 20px;
         border-radius: 11px;
         margin: 0 16px;
     }
 }
 
-@media screen and (max-width: 546px) {
+@media screen and (max-width: 546px)  and (orientation: portrait) {
     .wheelContainer {
         &__wrapp {
-            padding: 100px 10px 46px;
+            padding: 70px 10px 46px;
         }
     }
 
@@ -918,21 +924,25 @@
         }
 
         &__prize {
-            font-size: 36px;
+            font-size: 22px;
         }
 
         &__prizeMeasure {
             font-size: 9px;
         }
 
+        &__prizeMeasureAddText {
+            font-size: 7px;
+        }
+
         &__spinSectorStar1 {
-            width: 180px;
-            height: 180px;
+            width: 122px;
+            height: 122px;
         }
 
         &__spinSectorStar2 {
-            width: 96px;
-            height: 96px;
+            width: 72px;
+            height: 72px;
         }
 
         &__btn {
@@ -947,5 +957,9 @@
                 right: 8px;
             }
         }
+    }
+
+    .btn {
+        font-size: 18px;
     }
 }

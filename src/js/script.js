@@ -1,64 +1,13 @@
 document
   .getElementById("enterEmail__btn")
   .addEventListener("click", checkValidEmailAndcheckBonusExistence);
-const emailInput = document.getElementById("playerEmail");
 
 document.querySelector(".wheel__btn").addEventListener("click", mainSpinWheel);
 document.querySelector(".btn__spinWheel").addEventListener("click", mainSpinWheel);
 
-const sectors = [
-  {
-    minDegree: 0,
-    maxDegree: 22.5,
-    value: "10 free spins to deposit",
-    sectorDegree: 0,
-  },
-  {
-    minDegree: 22.6,
-    maxDegree: 67.5,
-    value: "120% to deposit",
-    sectorDegree: 45,
-  },
-  {
-    minDegree: 67.6,
-    maxDegree: 112.5,
-    value: "10 free spins to deposit",
-    sectorDegree: 90,
-  },
-  {
-    minDegree: 112.6,
-    maxDegree: 157.5,
-    value: "120% to deposit",
-    sectorDegree: 135,
-  },
-  {
-    minDegree: 157.6,
-    maxDegree: 202.5,
-    value: "15 free spins to deposit",
-    sectorDegree: 180,
-  },
-  {
-    minDegree: 202.6,
-    maxDegree: 247.5,
-    value: "120% to deposit",
-    sectorDegree: 225,
-  },
-  { minDegree: 247.6, maxDegree: 292.5, value: "No prize", sectorDegree: 270 },
-  {
-    minDegree: 292.6,
-    maxDegree: 337.5,
-    value: "100% to deposit",
-    sectorDegree: 315,
-  },
-  {
-    minDegree: 337.5,
-    maxDegree: 360,
-    value: "10 free spins to deposit",
-    sectorDegree: 360,
-  },
-];
 
-emailInput.addEventListener("keydown", function (event) {
+
+document.getElementById("playerEmail").addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     checkBonusExistence();
@@ -88,7 +37,7 @@ function showNoBonus() {
 
 async function getBonus(user) {
   try {
-    const response = await fetch("http://localhost:3000/get-bonus", {
+    const response = await fetch("http://localhost:4000/get-bonus", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -106,6 +55,58 @@ async function getBonus(user) {
 }
 
 function defineBonusSectorDegree(bonus) {
+  const sectors = [
+    {
+      minDegree: 0,
+      maxDegree: 22.5,
+      value: "10 free spins to deposit",
+      sectorDegree: 0,
+    },
+    {
+      minDegree: 22.6,
+      maxDegree: 67.5,
+      value: "120% to deposit",
+      sectorDegree: 45,
+    },
+    {
+      minDegree: 67.6,
+      maxDegree: 112.5,
+      value: "10 free spins to deposit",
+      sectorDegree: 90,
+    },
+    {
+      minDegree: 112.6,
+      maxDegree: 157.5,
+      value: "120% to deposit",
+      sectorDegree: 135,
+    },
+    {
+      minDegree: 157.6,
+      maxDegree: 202.5,
+      value: "15 free spins to deposit",
+      sectorDegree: 180,
+    },
+    {
+      minDegree: 202.6,
+      maxDegree: 247.5,
+      value: "120% to deposit",
+      sectorDegree: 225,
+    },
+    { minDegree: 247.6, maxDegree: 292.5, value: "No prize", sectorDegree: 270 },
+    {
+      minDegree: 292.6,
+      maxDegree: 337.5,
+      value: "100% to deposit",
+      sectorDegree: 315,
+    },
+    {
+      minDegree: 337.5,
+      maxDegree: 360,
+      value: "10 free spins to deposit",
+      sectorDegree: 360,
+    },
+  ];
+  
   for (const sector of sectors) {
     if (sector.value === bonus) {
       return -sector.sectorDegree;
@@ -188,7 +189,7 @@ async function checkBonusExistence(email) {
     name: email,
   };
   try {
-    const response = await fetch("http://localhost:3000/check-bonus", {
+    const response = await fetch("http://localhost:4000/check-bonus", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

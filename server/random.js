@@ -1,4 +1,4 @@
-function randomBonus(...args) {
+function getRandomBonus(...args) {
   const arr = [
     "10 free spins to deposit",
     "120% to deposit",
@@ -46,4 +46,4 @@ function randomBonus(...args) {
   }
 }
 
-module.exports = randomBonus;
+module.exports = { getRandomBonus };

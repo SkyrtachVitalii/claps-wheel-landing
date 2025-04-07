@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 let client;
@@ -5,6 +6,7 @@ let db;
 
 async function connectDB() {
   if (!client) {
+    console.log("Підключаємось до MongoDB...");
     client = new MongoClient(process.env.MONGO_URI, {
       serverApi: {
         version: ServerApiVersion.v1,
@@ -16,7 +18,7 @@ async function connectDB() {
 
     await client.connect();
     db = client.db("bonusWheelCluster");
-    console.log("Connected to MongoDB");
+    console.log("З'єднання з MongoDB встановлено");
   }
 }
 
@@ -29,6 +31,7 @@ function getDB() {
 
 async function closeDB() {
   if (client) {
+    console.log("Закриваємо з'єднання з MongoDB...");
     await client.close();
     console.log("MongoDB connection closed");
   }

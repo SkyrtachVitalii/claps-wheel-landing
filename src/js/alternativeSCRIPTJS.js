@@ -215,6 +215,8 @@
     }
 
     async mainSpinWheel() {
+      console.log("mainSpinWheel called");
+      
       const email = document.getElementById("playerEmail").value;
       const spinButton = document.querySelector(".wheel__btn"); // Або потрібна кнопка
       if (!EmailValidator.isValid(email)) {
@@ -259,5 +261,6 @@
     }
   }
 
-  const game = new Game();
+  // const game = new Game();
+  window.game = new Game();
 })();

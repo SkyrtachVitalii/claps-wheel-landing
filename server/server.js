@@ -8,7 +8,7 @@ const {
   addNewUserBonus,
   updateUserBonus,
 } = require("./modelsMongoDB/findMongoDB");
-const getRandomBonus = require("./random");
+const { getRandomBonus } = require("./random");
 const { fetchToSelzy } = require("./selzy/selzy");
 const axios = require("axios");
 

@@ -136,6 +136,7 @@
       this.wheel = new Wheel(".wheel__sectors");
       this.submitBtn = document.getElementById("enterEmail__btn");
       this.emailInput = document.getElementById("playerEmail");
+      this.isSpinning = false;
       this.initEventListeners();
       this.validateForm();
     }
@@ -151,12 +152,18 @@
         .addEventListener("click", () =>
           this.checkValidEmailAndcheckBonusExistence()
         );
-      document
-        .querySelector(".wheel__btn")
-        .addEventListener("click", () => this.mainSpinWheel());
+      document.querySelector(".wheel__btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        if (this.isSpinning) return;
+        this.mainSpinWheel();
+      });
       document
         .querySelector(".btn__spinWheel")
-        .addEventListener("click", () => this.mainSpinWheel());
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          if (this.isSpinning) return;
+          this.mainSpinWheel();
+        });
 
       document.querySelectorAll(".btn__spinAgain").forEach((button) =>
         button.addEventListener("click", (event) => {
@@ -215,17 +222,20 @@
     }
 
     async mainSpinWheel() {
-
       if (this.isSpinning) return;
       this.isSpinning = true;
-      
+
       const email = document.getElementById("playerEmail").value;
       const spinButton = document.querySelector(".wheel__btn");
       const spinButton2 = document.querySelector(".btn__spinWheel");
+
       spinButton.disabled = true;
       spinButton2.disabled = true;
       if (!EmailValidator.isValid(email)) {
         alert("Please enter your email first to proceed.");
+        this.isSpinning = false;
+        spinButton.disabled = false;
+        spinButton2.disabled = false;
         return;
       }
 
@@ -234,32 +244,31 @@
           email,
           this.agreement.isChecked
         );
-  
-        if (!bonusData) return;
-  
+
+        // if (!bonusData) return;
+        if (!bonusData) throw new Error("No bonus returned from server");
+
         const customWheelRotation = 5;
         const randomRotation = 360 * customWheelRotation;
-        const bonusSectorDegree = Wheel.defineBonusSectorDegree(bonusData.bonus);
-  
+        const bonusSectorDegree = Wheel.defineBonusSectorDegree(
+          bonusData.bonus
+        );
+
         if (bonusSectorDegree !== null) {
           this.wheel.spin(randomRotation + bonusSectorDegree);
-          setTimeout(() => {
-            UIManager.showBonus(bonusData.bonus);
-            spinButton.disabled = false;
-            spinButton2.disabled = false;
-            this.isSpinning = false;
-          }, 5000);
-          setTimeout(() => {
-            this.resetWheel();
-          }, 5001);
+
+          await new Promise((resolve) => setTimeout(resolve, 5000));
+
+          UIManager.showBonus(bonusData.bonus);
+          this.resetWheel();
         }
       } catch (error) {
         console.error("Error spinning wheel:", error);
+      } finally {
+        this.isSpinning = false;
         spinButton.disabled = false;
         spinButton2.disabled = false;
       }
-
-
     }
 
     resetWheel() {

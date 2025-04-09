@@ -1,72 +1,191 @@
+// тест на 100 запитів по черзі
+// jest.setTimeout(300000); // Тайм-аут на 5 хвилин (300000 мс)
+// const puppeteer = require("puppeteer");
+// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// describe("Тест надсилання 100 запитів", () => {
+//   let browser;
+//   let page;
+
+//   beforeAll(async () => {
+//     browser = await puppeteer.launch({ headless: true }); // Використовуйте `headless: false`, якщо хочете бачити браузер
+//     page = await browser.newPage();
+//     await page.goto("http://127.0.0.1:5501"); // Змінити на ваш локальний сервер
+//   });
+
+//   afterAll(async () => {
+//     await browser.close();
+//   });
+
+//   test("Виконати 100 запитів на сервер", async () => {
+//     console.log("Починаємо тест...");
+//     await delay(500);
+//     for (let i = 1; i <= 100; i++) {
+//       const email = `${i}testemail.v.skyrtach@claps.com`;
+//       await delay(500);
+
+//       // Очистка поля email
+//       await page.focus("#playerEmail");
+//       await page.click("#playerEmail", { clickCount: 3 });
+//       await page.keyboard.press("Backspace");
+//       await page.type("#playerEmail", "");
+//       await delay(500);
+
+//       // Заповнення email
+//       await page.focus("#playerEmail");
+//       await page.click("#playerEmail", { clickCount: 3 });
+//       await page.keyboard.press("Backspace");
+//       await page.type("#playerEmail", email);
+//       // Викликаємо input подію, щоб validateForm спрацювала
+//       await page.evaluate(() => {
+//         const emailInput = document.querySelector("#playerEmail");
+//         emailInput.dispatchEvent(new Event("input", { bubbles: true }));
+//       });
+
+//       // Активуємо "Agreement"
+//       await delay(500);
+//       await page.evaluate(() => {
+//         const checkbox = document.querySelector("input#agreement");
+//         checkbox.checked = true;
+//         checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+//       });
+
+//       // Надсилання форми
+//       await delay(500);
+//       await page.click("#enterEmail__btn");
+//       console.log(`Запит з email ${email} надіслано`);
+
+//       // Чекаємо появи колеса та кнопки spin
+//       await page.waitForSelector(".btn__spinWheel", {
+//         visible: true,
+//         timeout: 5000,
+//       });
+
+//       await delay(500); // трошки почекати
+
+//       // Натискаємо кнопку spin
+//       await page.click(".btn__spinWheel");
+//       console.log(`Натиснули spin для ${email}`);
+
+//       await delay(6000);
+
+//       // Очікуємо бонус від сервера
+//       // Перевіряємо, який блок з'явився
+//       const isVictoryVisible = await page.evaluate(() => {
+//         const element = document.querySelector(".victory");
+//         return element && window.getComputedStyle(element).display !== "none";
+//       });
+//       console.log("Is .victory visible?", isVictoryVisible);
+      
+//       const isNoPrizeVisible = await page.evaluate(() => {
+//         const element = document.querySelector(".noPrize");
+//         return element && window.getComputedStyle(element).display !== "none";
+//       });
+//       console.log("Is .noPrize visible?", isNoPrizeVisible);
+
+//       if (isVictoryVisible) {
+//         console.log(`Отримано приз для ${email}, нічого не робимо.`);
+//       } else if (isNoPrizeVisible) {
+//         console.log(`Блок .noPrize з'явився для ${email}, повторне обертання.`);
+//         await delay(4000); // Затримка перед наступним циклом
+//         // Натискаємо на кнопку "spin again"
+//         await page.click(".btn__spinAgain");
+//         console.log("Натиснули на 'spin again'");
+
+//         await delay(4000); // Затримка перед наступною дією
+
+//         // Знову натискаємо кнопку "spin wheel"
+//         await page.click(".btn__spinWheel");
+//         console.log(`Повторне обертання колеса для ${email}`);
+
+//         await delay(15000); // Затримка перед наступним циклом
+//       }
+
+//       await delay(5000); // Затримка 15 секунд між запитами
+//     }
+//   });
+// });
+
+
+// тест на 100 запитів одразу
 jest.setTimeout(300000); // Тайм-аут на 5 хвилин (300000 мс)
 const puppeteer = require("puppeteer");
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-describe("Тест надсилання 100 запитів", () => {
+describe("Тест одночасного надсилання 100 запитів", () => {
   let browser;
-  let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: false }); // Використовуйте `headless: false`, якщо хочете бачити браузер
-    page = await browser.newPage();
-    await page.goto("http://127.0.0.1:5501"); // Змінити на ваш локальний сервер
+    browser = await puppeteer.launch({ headless: true }); // Використовуйте `headless: false`, якщо хочете бачити браузер
   });
 
   afterAll(async () => {
     await browser.close();
   });
 
-  test("Виконати 100 запитів на сервер", async () => {
-    console.log("Починаємо тест...");
-    await delay(500);
-    for (let i = 1; i <= 1; i++) {
-      const email = `${i}testemail.v.skyrtach@claps.com`;
-      await delay(500);
+  test("Одночасно виконати 100 запитів", async () => {
+    const tasks = []; // Масив для всіх задач (запитів)
 
-      // Очистка поля email
-      await page.focus("#playerEmail");
-      await page.click("#playerEmail", { clickCount: 3 });
-      await page.keyboard.press("Backspace");
-      await page.type("#playerEmail", "");
-      await delay(500);
+    for (let i = 1; i <= 100; i++) {
+      // Для кожного запиту створюємо окрему асинхронну задачу
+      tasks.push((async (index) => {
+        const page = await browser.newPage(); // Відкриваємо нову сторінку для кожного запиту
+        const email = `${index}testemail.v.skyrtach@claps.com`;
 
-      // Заповнення email
-      await page.focus("#playerEmail");
-      await page.click("#playerEmail", { clickCount: 3 });
-      await page.keyboard.press("Backspace");
-      await page.type("#playerEmail", email);
-      // Викликаємо input подію, щоб validateForm спрацювала
-      await page.evaluate(() => {
-        const emailInput = document.querySelector("#playerEmail");
-        emailInput.dispatchEvent(new Event("input", { bubbles: true }));
-      });
+        console.log(`Починаємо обробку для email: ${email}`);
+        await page.goto("http://127.0.0.1:5501"); // Змініть URL на свій локальний сервер
 
-      // Активуємо "Agreement"
-      await delay(500);
-      await page.evaluate(() => {
-        const checkbox = document.querySelector("input#agreement");
-        checkbox.checked = true;
-        checkbox.dispatchEvent(new Event("change", { bubbles: true }));
-      });
+        // Заповнення поля email
+        await page.type("#playerEmail", email);
 
-      // Надсилання форми
-      await delay(500);
-      await page.click("#enterEmail__btn");
-      console.log(`Запит з email ${email} надіслано`);
+        // Активуємо "Agreement"
+        await page.evaluate(() => {
+          const checkbox = document.querySelector("input#agreement");
+          checkbox.checked = true;
+          checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+        });
 
-      // Чекаємо появи колеса та кнопки spin
-      await page.waitForSelector(".btn__spinWheel", {
-        visible: true,
-        timeout: 5000,
-      });
+        // Натискаємо кнопку "Submit Email"
+        await page.click("#enterEmail__btn");
+        console.log(`Email ${email} надіслано`);
 
-      await delay(500); // трошки почекати
+        // Чекаємо появи колеса та кнопки "spin"
+        await page.waitForSelector(".btn__spinWheel", {
+          visible: true,
+          timeout: 10000,
+        });
 
-      // Натискаємо кнопку spin
-      await page.click(".btn__spinWheel");
-      console.log(`Натиснули spin для ${email}`);
+        // Натискаємо кнопку "spin"
+        await page.click(".btn__spinWheel");
+        console.log(`Запустили колесо для email: ${email}`);
 
-      await delay(15000); // Затримка 15 секунд між запитами
+        // Перевіряємо результат
+        const isVictoryVisible = await page.evaluate(() => {
+          const element = document.querySelector(".victory");
+          return element && window.getComputedStyle(element).display !== "none";
+        });
+
+        const isNoPrizeVisible = await page.evaluate(() => {
+          const element = document.querySelector(".noPrize");
+          return element && window.getComputedStyle(element).display !== "none";
+        });
+
+        if (isVictoryVisible) {
+          console.log(`Отримано приз для ${email}`);
+        } else if (isNoPrizeVisible) {
+          console.log(`Блок .noPrize з'явився для ${email}, повторне обертання.`);
+          await page.click(".btn__spinAgain");
+          await page.waitForSelector(".btn__spinWheel", { visible: true, timeout: 5000 });
+          await page.click(".btn__spinWheel");
+          console.log(`Повторне обертання для ${email}`);
+        }
+
+        await page.close(); // Закриваємо сторінку після завершення тесту для поточного запиту
+      })(i));
     }
+
+    // Виконати всі задачі паралельно
+    await Promise.all(tasks);
+
+    console.log("Усі запити виконано!");
   });
 });

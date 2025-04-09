@@ -215,16 +215,19 @@
     }
 
     async mainSpinWheel() {
-      console.log("mainSpinWheel called");
+
+      if (this.isSpinning) return;
+      this.isSpinning = true;
       
       const email = document.getElementById("playerEmail").value;
-      const spinButton = document.querySelector(".wheel__btn"); // Або потрібна кнопка
+      const spinButton = document.querySelector(".wheel__btn");
+      const spinButton2 = document.querySelector(".btn__spinWheel");
+      spinButton.disabled = true;
+      spinButton2.disabled = true;
       if (!EmailValidator.isValid(email)) {
         alert("Please enter your email first to proceed.");
         return;
       }
-
-      spinButton.disabled = true; // Блокуємо кнопку
 
       try {
         const bonusData = await BonusManager.getBonus(
@@ -242,7 +245,9 @@
           this.wheel.spin(randomRotation + bonusSectorDegree);
           setTimeout(() => {
             UIManager.showBonus(bonusData.bonus);
-            spinButton.disabled = false; // Розблокуємо кнопку після показу бонусу
+            spinButton.disabled = false;
+            spinButton2.disabled = false;
+            this.isSpinning = false;
           }, 5000);
           setTimeout(() => {
             this.resetWheel();
@@ -250,7 +255,8 @@
         }
       } catch (error) {
         console.error("Error spinning wheel:", error);
-        spinButton.disabled = false; // Розблокуємо кнопку у разі помилки
+        spinButton.disabled = false;
+        spinButton2.disabled = false;
       }
 
 

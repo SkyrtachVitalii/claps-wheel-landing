@@ -1,5 +1,5 @@
-@import "./src/scss/normalize.scss";
-@import "./src/scss/reset.scss";
+// @import "./src/scss/normalize.scss";
+// @import "./src/scss/reset.scss";
 // @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
 
 :root {
@@ -228,7 +228,7 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -600,7 +600,7 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -714,7 +714,7 @@ body {
 //   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;

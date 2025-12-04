@@ -63,7 +63,7 @@ body {
 
 .testYourLuck {
   height: 100dvh;
-  background: url("./src/img/bg.webp") no-repeat bottom center;
+  background: url("/src/img/bg.webp") no-repeat bottom center;
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -317,7 +317,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 4% auto 4%;
-  background: url("./src/img/innerCircle.png") no-repeat center center;
+  background: url("/src/img/innerCircle.png") no-repeat center center;
   background-size: contain;
   z-index: 1;
 
@@ -326,7 +326,7 @@ body {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    background: url("./src/img/outerCircle.png") no-repeat center center;
+    background: url("/src/img/outerCircle.png") no-repeat center center;
     background-size: contain;
     z-index: 5;
     max-width: 494px;
@@ -348,7 +348,7 @@ body {
       translate: -50% 0.5%;
       width: 31%;
       height: 35%;
-      background: url("./src/img/currentSector.png") no-repeat center center;
+      background: url("/src/img/currentSector.png") no-repeat center center;
       background-size: contain;
       z-index: 2000;
     }
@@ -363,7 +363,7 @@ body {
       max-height: 71px;
       width: 15%;
       height: 15%;
-      background: url("./src/img/wheel_arrow.png") no-repeat center center;
+      background: url("/src/img/wheel_arrow.png") no-repeat center center;
       background-size: cover;
       z-index: 10000;
     }
@@ -525,7 +525,7 @@ body {
       max-height: 219px;
       width: 50%;
       height: 50%;
-      background: url("./src/img/star_1.png") no-repeat center center;
+      background: url("/src/img/star_1.png") no-repeat center center;
       background-size: contain;
       opacity: 0.4;
       aspect-ratio: 1 / 1;
@@ -540,7 +540,7 @@ body {
       max-height: 219px;
       width: 25%;
       height: 25%;
-      background: url("./src/img/star_2.png") no-repeat center center;
+      background: url("/src/img/star_2.png") no-repeat center center;
       background-size: contain;
       opacity: 0.4;
       aspect-ratio: 1 / 1;
@@ -589,7 +589,7 @@ body {
       position: absolute;
       top: 9%;
       right: 15%;
-      background: url("./src/img/spin_circle_blik.png") no-repeat bottom center;
+      background: url("/src/img/spin_circle_blik.png") no-repeat bottom center;
       background-size: cover;
       z-index: 1200;
     }
@@ -646,7 +646,7 @@ body {
     height: 82svh;
     max-height: 738px;
     margin: 0 auto;
-    background: url("./src/img/confetti.svg"),
+    background: url("/src/img/confetti.svg"),
       linear-gradient(90deg, #5f5759 0%, #231e29 90%);
     background-size: cover;
     background-position: center;
@@ -1066,7 +1066,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 4% auto 4%;
-    background: url("./src/img/innerCircle.png") no-repeat center center;
+    background: url("/src/img/innerCircle.png") no-repeat center center;
     background-size: contain;
     z-index: 1;
 
@@ -1075,7 +1075,7 @@ body {
       top: 50%;
       left: 50%;
       translate: -50% -50%;
-      background: url("./src/img/outerCircle.png") no-repeat center center;
+      background: url("/src/img/outerCircle.png") no-repeat center center;
       background-size: contain;
       z-index: 5;
       max-width: 494px;
@@ -1097,7 +1097,7 @@ body {
         translate: -50% 0.5%;
         width: 31%;
         height: 35%;
-        background: url("./src/img/currentSector.png") no-repeat center center;
+        background: url("/src/img/currentSector.png") no-repeat center center;
         background-size: contain;
         z-index: 2000;
       }
@@ -1112,7 +1112,7 @@ body {
         max-height: 71px;
         width: 15%;
         height: 15%;
-        background: url("./src/img/wheel_arrow.png") no-repeat center center;
+        background: url("/src/img/wheel_arrow.png") no-repeat center center;
         background-size: cover;
         z-index: 10000;
       }
@@ -1273,7 +1273,7 @@ body {
         max-height: 219px;
         width: 50%;
         height: 50%;
-        background: url("./src/img/star_1.png") no-repeat center center;
+        background: url("/src/img/star_1.png") no-repeat center center;
         background-size: contain;
         opacity: 0.4;
         aspect-ratio: 1 / 1;
@@ -1288,7 +1288,7 @@ body {
         max-height: 219px;
         width: 25%;
         height: 25%;
-        background: url("./src/img/star_2.png") no-repeat center center;
+        background: url("/src/img/star_2.png") no-repeat center center;
         background-size: contain;
         opacity: 0.4;
         aspect-ratio: 1 / 1;

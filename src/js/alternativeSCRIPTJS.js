@@ -5,6 +5,7 @@
       return EMAIL_REGEXP.test(email);
     }
   }
+
   class Agreement {
     constructor(id, gameInstance) {
       this.agreement = document.getElementById(id);
@@ -21,42 +22,56 @@
   }
 
   class BonusManager {
-    static mainUrl = "http://localhost:4000";
-    // static mainUrl = "https://test-your-luck-on-claps.replit.app";
-    // static mainUrl = "https://7c64075a-37c4-4e03-a733-a0fec2fb0ed0-00-2pvyzoxq5y2yv.riker.replit.dev";
-
+    // static mainUrl = "http://localhost:4000"; // ВИМКНЕНО
+    
+    // --- ЕМУЛЯЦІЯ ВІДПОВІДІ СЕРВЕРА (ПЕРЕВІРКА КОРИСТУВАЧА) ---
     static async checkBonus(email) {
-      try {
-        const checkBonusUrl = `${BonusManager.mainUrl}/check-bonus`;
-        const response = await fetch(checkBonusUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: email }),
-        });
+      // Імітуємо затримку мережі (для реалістичності)
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-        if (!response.ok) throw new Error("Запит не вдався");
-        return await response.json();
-      } catch (error) {
-        console.error("Помилка:", error);
-        throw error;
-      }
+      console.log(`[Frontend Only] Перевірка пошти: ${email}`);
+
+      /* Тут був запит на бекенд. Ми його закоментували.
+      Замість нього ми повертаємо об'єкт, який каже грі, 
+      що користувач новий і може крутити колесо.
+      */
+      
+      // const response = await fetch(...) 
+      
+      return { 
+        userExist: false, 
+        bonusExist: false, 
+        spinsAmount: 0 
+      };
     }
 
+    // --- ЕМУЛЯЦІЯ ВІДПОВІДІ СЕРВЕРА (ОТРИМАННЯ БОНУСУ) ---
     static async getBonus(email, agreement) {
-      try {
-        const getBonusUrl = `${BonusManager.mainUrl}/get-bonus`;
-        const response = await fetch(getBonusUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: email, agreement: agreement }),
-        });
+      // Імітуємо затримку мережі
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log(`[Frontend Only] Отримання бонусу для: ${email}`);
 
-        if (!response.ok) throw new Error("Запит не вдався");
-        return await response.json();
-      } catch (error) {
-        console.error("Помилка:", error);
-        throw error;
-      }
+      /* Логіка вибору призу тепер тут, на фронтенді.
+      Ми беремо список усіх можливих призів і вибираємо випадковий.
+      */
+      const possiblePrizes = [
+        "10 free spins to deposit",
+        "120% to deposit",
+        "115% to deposit",
+        "15 free spins to deposit",
+        "No prize",
+        "100% to deposit"
+      ];
+
+      // Випадковий індекс масиву
+      const randomIndex = Math.floor(Math.random() * possiblePrizes.length);
+      const randomBonus = possiblePrizes[randomIndex];
+
+      console.log(`[Frontend Only] Випав приз: ${randomBonus}`);
+
+      // Повертаємо формат, який очікує гра
+      return { bonus: randomBonus };
     }
   }
 
@@ -125,6 +140,7 @@
         { value: "100% to deposit", sectorDegree: 315 },
         { value: "10 free spins to deposit", sectorDegree: 360 },
       ];
+      // Шукаємо перший збіг, щоб визначити кут
       const sector = sectors.find((s) => s.value === bonus);
       return sector ? -sector.sectorDegree : 0;
     }
@@ -211,6 +227,8 @@
       }
 
       const bonusExistence = await BonusManager.checkBonus(email);
+      
+      // Логіка перевірки результату (тепер працює з нашим локальним моком)
       if (
         !bonusExistence.userExist ||
         (bonusExistence.bonusExist === false && bonusExistence.spinsAmount < 2)
@@ -245,8 +263,7 @@
           this.agreement.isChecked
         );
 
-        // if (!bonusData) return;
-        if (!bonusData) throw new Error("No bonus returned from server");
+        if (!bonusData) throw new Error("No bonus returned (Simulation Error)");
 
         const customWheelRotation = 5;
         const randomRotation = 360 * customWheelRotation;
@@ -257,6 +274,7 @@
         if (bonusSectorDegree !== null) {
           this.wheel.spin(randomRotation + bonusSectorDegree);
 
+          // Чекаємо завершення анімації
           await new Promise((resolve) => setTimeout(resolve, 5000));
 
           UIManager.showBonus(bonusData.bonus);
@@ -276,6 +294,5 @@
     }
   }
 
-  // const game = new Game();
   window.game = new Game();
 })();
